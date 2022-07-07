@@ -23,7 +23,7 @@ spec:
         image: nginx:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 443
+        - containerPort: 80
           protocol: TCP
 
         volumeMounts:
