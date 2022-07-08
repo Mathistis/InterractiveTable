@@ -18,14 +18,21 @@ spec:
       - name: task-pv-storage
         persistentVolumeClaim:
           claimName: nginx-claim0
+      - name: task-pv-config-storage
+        persistentVolumeClaim:
+          claimName: nginx-claim-conf
       containers:
       - name: nginx
         image: nginx:latest
         imagePullPolicy: Always
         ports:
+        - containerPort: 443
+          protocol: TCP
         - containerPort: 80
           protocol: TCP
 
         volumeMounts:
-        - mountPath: "/usr/share/nginx/html"
+        - mountPath: "/usr/share/nginx/html" # mount www stuff
           name: task-pv-storage
+        - mountPath: "/etc/nginx/conf.d/" #mount config file
+          name: task-pv-config-storage

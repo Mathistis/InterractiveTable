@@ -1,17 +1,22 @@
-apiVersion: apps/v1
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: nginx-svc
   labels:
     app: nginx-svc
 spec:
-  loadBalancerIP: 172.16.0.49
   selector:
     app: nginx
   ports:
-  - port: 8080
+  - port: 443
+    name: "443"
+    protocol: TCP
+    targetPort: 443
+  - port: 80
+    name: "80"
     protocol: TCP
     targetPort: 80
+  spec:
+  externalTrafficPolicy: Local
   type: LoadBalancer
-  
+  loadBalancerIP: 172.16.0.49
