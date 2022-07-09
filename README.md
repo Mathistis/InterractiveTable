@@ -10,4 +10,4 @@ User interract with website to draw some patterns. Once the pattern is ready, it
     - make sure the configuration of router in DMZ (172.16.0.1) is correct telnet --> (configure --> pinhole --> view)
     - reboot router.
 - restart cluster
-- check config kubectl describe "ressource_name"
+- check config **kubectl describe "ressource_name"**

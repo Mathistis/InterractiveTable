@@ -3,35 +3,13 @@ kind: Ingress
 metadata:
   name: http-ingress
   annotations:
-    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "acme-issuer-prod"
 spec:
+  
   rules:
     - host: raemylab.ch
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: nginx-svc
-                port:
-                  number: 443
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: nginx-svc
-                port:
-                  number: 80
-    - http:     # DEFAULT SERVICE ROUTE
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: nginx-svc
-                port:
-                  number: 443
           - path: /
             pathType: Prefix
             backend:
