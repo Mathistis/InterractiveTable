@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/mathis/workspace/LedTable'
+rsync -ar /home/mathis/workspace/LedTable/kubernetes ubuntu@172.16.0.20:~/LedTable
+rsync -ar /home/mathis/workspace/LedTable/www ubuntu@172.16.0.20:~/LedTable
+rsync -ar /home/mathis/workspace/LedTable/api ubuntu@172.16.0.20:~/LedTable
+make: Leaving directory '/home/mathis/workspace/LedTable'
+ 

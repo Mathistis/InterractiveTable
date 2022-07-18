@@ -4,6 +4,12 @@ Summer projet made because of interrest of technologie. The only goal is to lear
 ## Table creation
 User interract with website to draw some patterns. Once the pattern is ready, it is displayed on a table which contains matrix of LED RGB.
 
+## Network Architecture
+For the moment, the embedded Raspberrry Pi is inside my DMZ. I know. It's  a bad idea. We normally should build a tunnel between
+my DMZ and the embedded Raspberry Pi but to secure it we also need certificate to authentify every tables. Wich requiere to build my own
+PKI, which is too much work for this projet. For now table will work only at my home in my DMZ. Maybe could be a future upgrade.
+
+
 ## Trobbleshooting
 - If the load balancer do not work, (curl 172.16.0.49) make sure you have enabled metallb (microk8s enable metallb)
 - If previous step is correct, test the dns redirection through the double home's routes (curl raemylab.ch)

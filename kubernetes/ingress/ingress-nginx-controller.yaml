@@ -4,12 +4,20 @@ metadata:
   name: http-ingress
   annotations:
     cert-manager.io/cluster-issuer: "acme-issuer-prod"
+    # nginx.ingress.kubernetes.io/rewrite-target: /$2  #used to strip the url used for routing so the api think '/api' is '/''
 spec:
   
   rules:
     - host: raemylab.ch
       http:
         paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: table-api-svc
+                port:
+                  number: 80
           - path: /
             pathType: Prefix
             backend:

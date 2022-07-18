@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: table-api-svc
+  labels:
+    app: table-api-svc
+spec:
+  selector:
+    app: table-api
+  ports:
+  - port: 80
+    name: "http"
+    protocol: TCP
+    targetPort: 80
+  spec:
+  type: ClusterIP

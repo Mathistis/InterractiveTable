@@ -1,0 +1,1 @@
+{"buildTargets":["all","api","build_api","clean_all","clean_api","clean_kube","clean_www","docker","kube","shutdown","start","www"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

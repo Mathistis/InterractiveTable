@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: table-api-depl
+  labels:
+    app: table-api-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: table-api
+  template:
+    metadata:
+      labels:
+        app: table-api
+    spec:
+      volumes:
+      - name: task-pv-storage
+        persistentVolumeClaim:
+          claimName: table-api-claim
+      containers:
+      - name: table-api
+        image: table-api:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.5"
+        volumeMounts:
+        - mountPath: "/code/app" 
+          name: task-pv-storage

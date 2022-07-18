@@ -1,6 +1,6 @@
 #can {
     cursor: crosshair;
-    
+    touch-action:none;
     width: 100%;
     background-color: brown;
     border: 2px solid;

@@ -33,8 +33,14 @@ function init() {
     canvas = document.getElementById('can');
     resizeCanvasToDisplaySize(canvas);
     ctx = canvas.getContext("2d");
+    init_event_mouse(canvas);
+    init_event_mobile(canvas);
+
+    x = "black"
+}
 
 
+function init_event_mouse(canvas) {
     canvas.addEventListener("mousemove", function (e) {
         findxy('move', e)
     }, false);
@@ -47,13 +53,28 @@ function init() {
     canvas.addEventListener("mouseout", function (e) {
         findxy('out', e)
     }, false);
-    x = "black"
 }
 
+function init_event_mobile(canvas) {
+    canvas.addEventListener("touchmove", convert_touchmouve_mousemove, false);
+    canvas.addEventListener("touchstart", function (e) {
+        findxy('down', e)
+    }, false);
+    canvas.addEventListener("touchend", function (e) {
+        findxy('up', e)
+    }, false);
 
 
+}
 
-
+function convert_touchmouve_mousemove(e) {
+    var touch = e.touches[0];
+    var mouseEvent = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+    });
+    canvas.dispatchEvent(mouseEvent);
+}
 
 function color(obj) {
     switch (obj.id) {
@@ -111,6 +132,8 @@ function save() {
 }
 
 function findxy(res, e) {
+    e.preventDefault();
+    e.stopPropagation();
     if (res == 'down') {
         prevX = currX;
         prevY = currY;
